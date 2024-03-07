@@ -21,3 +21,13 @@ class AvailableCuisines(str, Enum):
 @app.get("/fooditems/{cuisine}")
 async def get_items(cuisine: AvailableCuisines):
     return food_items.get(cuisine)
+
+coupon_code = {
+    1: '10%',
+    2: '20%',
+    3: '30%'
+}
+
+@app.get("get_coupon/{code}")
+async def get_items(code: int):
+    return { 'discount_amount': coupon_code.get(code)}
