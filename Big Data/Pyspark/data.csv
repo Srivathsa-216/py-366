@@ -1,4 +1,7 @@
-Name,Age,Experience
+Name,Age,Experience,Salary
 Shri,29,2
-Kris,22,3
-Adarsh,22,4
+Kris,22,3,12000
+Adarsh,22,4,81000
+Anand,,12,10101
+,43,,12243
+,21,4,8425
