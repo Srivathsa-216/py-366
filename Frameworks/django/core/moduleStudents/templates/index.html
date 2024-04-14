@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block start %}
+
+    <title>Django - Index</title>
+    <style>
+        /* Basic styling for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        /* Styling for table header */
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Alternate row background color for better readability */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/contact/">
+        Contact
+    </a>
+    |
+    <a href="/about/">
+        About
+    </a>
+
+    <h1> This is django sample index page dont mind please!!!</h1>
+    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+         Asperiores quia excepturi aspernatur at illo fugit dignissimos 
+         sint earum? Fuga quae in esse facere? there </p>
+
+
+    {{peoples_d}}
+
+    <table class = "container">
+        <thead>
+            <tr>
+                <th>Sl No</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Can Vote ?</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for people in peoples_d %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{people.name}}</td>
+                <td>{{people.age}}</td>
+                <td {% if people.age >= 18 %} style = "background:green" {% endif %} >
+                    {% if people.age >= 18 %}
+                    👍
+                    {% else %}
+                    👎
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    
+    {{text|truncatechars:102}}
+
+    Check for vegetables .....
+
+    <p>
+
+        {% if 'Radish' in vegetables %}
+
+        yes available !!!!!!!!!
+
+        {% else %}
+
+        sorry, will make it available soon if it is a vagetable
+
+        {% endif %}
+
+    </p>
+
+    <script>
+
+        console.log("hi there i am from django application....")
+
+    </script>
+
+{% endblock %}
