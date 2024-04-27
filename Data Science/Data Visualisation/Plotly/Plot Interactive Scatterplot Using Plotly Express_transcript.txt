@@ -1,0 +1,358 @@
+Hello everyone and welcome to this new hands on Project
+on interactive data visualization with Plot li Express.
+My name is Ryan Ahmed and I will be your instructor
+for this course.
+I hold the Masters of Applied Science and a PhD degrees
+in Engineering from McMaster University in Ontario Canada.
+I taught over a quarter of a million students online
+from over 160 countries.
+In this crash course we are going to use Plot li Express,
+which is a super powerful python package that empowers anyone
+to create, manipulate and render graphical figures.
+This crash course is very practical and directly applicable
+to many industries such as banking, finance and tech
+industries.
+So you guys can add this project to your portfolio
+of projects which is essential for your next job interview
+for those of you guys who are new to rhyme, rhyme is
+an online platform for hands on projects creation.
+It will allow you to learn by doing so on the right hand side,
+you should see the recorded videos, you can pause the video
+at any time you want.
+And on the left hand side you will see rhymes virtual machine
+simply.
+It's a pre configured cloud desktop with all the software pre
+installed and ready for you to use.
+So you don't have to worry about any installations
+or any issues.
+Just go ahead.
+Follow along and code with me.
+Please note that this project is a beginner level and it has
+basic prerequisites.
+It requires basic python programming capabilities.
+Okay, so let's go ahead and get started.
+So what you guys can see here is you should be able to see
+a jupiter notebook entitled crash course on interactive data
+visualization with plot we express.
+So in this notebook I've included everything you need.
+So you guys should be able to see the code scripts.
+Also, you will be able to see a ton of many challenges
+along the way and also the solutions out of these many
+challenges.
+Everything is contained in this notebook in here.
+In addition to that, I've also included all the data that we
+will be working with in this project.
+So here I have a list of CSP files entitled crypto prices,
+we have employeessalaries information, we're going to also
+work with Gap Minder, gonna explain that later on.
+We're also going to deal with restaurant data as well as well
+as university admission data set.
+So what I want, what I want you guys to do is to please go
+ahead and click on this jupiter notebook here and it should
+open separately in a new tab and it might take, I would say
+a couple of seconds for it to open.
+But again, as I mentioned, I've included everything
+in this notebook in here.
+Okay, so I've divided this notebook into a series of tasks.
+So let me walk you through the entire notebook.
+So in task one we will learn how to plot interactive
+scattered plots using plot we express.
+And if you guys scroll down here, you should be able to see
+the kind of plots that we will be able to generate and please
+note that in every task, I have added a mini challenge
+for you guys.
+So after task one, I've included many challenge
+one and I'm going to for example ask you to plot a scatter
+plot using a new data set and if you guys crawl down
+to the end to the bottom of the notebook, I've included
+the solutions for every single minute challenge.
+So many challenge solutions here, I have many challenge
+number one solution to solution and all the solutions are
+available in here for us.
+But please I highly recommend that you guys do not look
+at the many challenges solutions an attempt to solve
+these many challenges on your own.
+And basically I'm going to ask you to pause the video, give
+it a shot and please afterwards you can go ahead and compare
+your answers to the answer sheet that I got at the end
+of the notebook.
+Okay. In task to we will learn how to plot interactive bubble
+charts or essentially scatter plots with size associated
+with it.
+And these are the kind of plots that will be able to generate.
+And in task number three we learn how to plot interactive
+single line plot with plot we express.
+So we'll be able to visualize data about cryptocurrencies.
+So we'll be able to visualize Bitcoin prices, a Syrian prices
+and light coin prices as well.
+And in task Force we learn how to plot multiple interactive
+multiple plots.
+And then in Task five we will plot interactive pie charts.
+And again as promised you guys were able to see many
+challenges in every single task.
+And then in task six will learn how to plot interactive bar
+chart, something that looks like that here and also how
+to color code as well, the bar chart to and then in task
+seven we learn how to plot gant chart and again many
+challenge along the way.
+Mini Challenge seven.
+And then in task eight we learn how to plot what we call it
+the sun burst which is really cool plot that looks
+like that will also learn how to plot it as well.
+And that should simply going to conclude our project.
+And what I want you guys to do right now is let's go ahead
+and actually start with our first task.
+So if you guys scroll up to here, what we're gonna do is
+we learn how to first import our plot we express library
+and the next we'll learn how to plot interactive scatter
+plots. So on your machine, on your virtual machine, you
+should be able to run this code with no issues because again,
+this is an exact copy of what I'm running on my machine as
+well. But in case if you guys wanted to run this code,
+for example, on a separate machine, I want you guys to make
+sure that we installed plot li so to do that, you guys need
+to remove the hashtag here and just go ahead and run the cell.
+And again, you guys only need to do that if you're running
+this notebook on your machine on a different machine.
+But if you guys are using grime, you don't have to do
+anything at all.
+Just go back and add your hashtag here and don't worry
+about the cell at all.
+Okay, so the question is, what is plot li so as I mentioned,
+plot li python package essentially empowers anyone to create
+really powerful graphical figures and they are
+all interactive, which is really powerful.
+So what we're gonna do is I'm going to show you guys a ton
+of plots such as cattle plot, such as pie charts, bar charts
+and so on.
+And all of that will be written with simple lines of code.
+Okay, so let me show you guys the first step, what
+we're going to do first is I want to first import our plot li
+express library.
+So to do that, I'm going to say import and I want you guys
+to please go ahead and code along with me.
+So please write import and then right Claude lee dot express
+as P x.
+And that's simply the short version of plot we express.
+So essentially we're going to refer to plot the Express
+with PX throughout the entire code and then I'm going
+to say import pandas as Pd and pandas is primarily going
+to be we're going to be using it for data frame manipulations.
+Think of it as more of an excel in python.
+Okay. So to execute around the cell, you guys can go ahead
+and press on the keyboard, shift and enter.
+So shift and enter should be able to execute around the cell.
+And what you guys see here is that there is an asterisk
+or star indicating that this cell is being executed right now,
+once it's done, once it has been successfully executed, you
+should be able to see that this has been converted
+into a number essentially.
+So again, it's taking some time for it to run.
+Might take like 30 seconds or so, but once it's over, you
+guys should be able to see a number in here.
+Okay. The next step is I wanted to import my first data sets
+and the first data that we're going to import is we're going
+to import the employee salaries information.
+So what I see here now, the cell has been executed
+successfully so now I can go ahead and essentially import my
+data. So I'm going to say salary underscore d f
+and that will be my data frame that includes information.
+I'm going to use pandas dot read c s V to read my data.
+So I'm going to say PB dot read underscore c s v u open
+parentheses and then you need to specify the name of the c S
+V File that you wanted to read.
+So if you guys go back to here to the main browser here, you
+should be able to see that here.
+I have employee underscore salaries the C. S. V.
+And that simply is going to be my C. S. V.
+File that I'm going to import.
+So here I'm going to say employee employee underscored
+salaries dot C. S. V.
+And that's it.
+That's simply how do we import the data?
+And if you guys wanted to view the salary D. F. I can say
+salary underscored the F.
+And that simply is going to be my data frame that contains
+all the information.
+So right now if you press shift and enter, so once you run
+the cell you should be able to see the salary D. F.
+And essentially it's very simple data set that contains
+two columns here.
+I have the number of years of experience and here I have
+the salad information and all I wanted to do next is I wanted
+to plot the X.
+Versus Y. I just wanted to plot the years of experience
+on the X. Axis and the salary information on the Y axis.
+And let's see what's going to happen.
+So in order to do that I'm going to use plot.
+We express and simply a plot we express is the we call it
+the entry level library to plot li so it's essentially a very
+simple way of leveraging plot li without learning
+like a complicated code.
+It's really simple and I'm going to show you guys
+with one single line of code.
+We should be able to plot really powerful plots.
+And they are interactive as well.
+So let me show you how we can do that.
+I'm going to say fig equals two.
+And in order to or use plot, we express I need to say P. X.
+Which stands for plot li express dot scatter which stands
+for cattle plot, open parentheses.
+And then you need to specify what would be the data frame.
+What is the source of the data, What do you want to plot
+on the X axis and what do you want to plot on the Y axis?
+And that's it, that's all what you need.
+So the data is salary underscored the f that's the data frame
+that we imported earlier.
+You guys can see if you guys remember here and I need
+to specify what was going to be on the X axis chroma and what
+do I need to plot on the Y axis, That's all it is.
+So on the X axis, I need to specify that in quotation marks.
+And if you guys go up, you should be able to see
+that this column here is entitled Years of Experience.
+So I'm just going to write that.
+I'm going to say years underscore of underscore experience.
+And on the y axis I need to plot simply the salary
+information.
+So I'm going to say salary information and next what I wanted
+to do is I wanted to take that fig object and just show it.
+So I'm gonna say fig dot show and open parentheses.
+If you press shift and enter right now, what you guys
+should be able to see.
+It's taking some time for the two run.
+You should be able to see our first scatter plot using plot
+we express and here we go.
+What you guys can see here is that we have been able
+to plot is cattle plot essentially every X and Y point
+that I have in here.
+Like this point at this point, these are X and Y coordinates.
+All of these have been represented by a point in here on my
+scatter plot and what's super powerful about plot lee and I
+really actually like it.
+This is more of a dynamic interactive plot, meaning that you
+guys can go ahead and zoom in as well and explored the plot.
+So you can, you guys can see here is they can see all
+the different interactions.
+So you can see in every point it has a number of years
+of experience versus the salary information as well.
+What you can also do is that you can go ahead and auto scale
+and that should scale it back to its original forum and there
+are tons of options available for you here.
+If you wanted to zoom in.
+For example, you can go ahead.
+Oops, let's go ahead and actually zoom out first.
+So I'm just gonna go to scale and what you guys can do is
+they can go ahead here and zoom in as well.
+You can also zoom out.
+You can also export as well.
+Your, your graph if you wanted to include it in a report
+for example, and there are tons of options available here
+and I'm going to cover them in details throughout the entire
+project.
+But if you wanted to go to scale, that will be the most
+common one.
+That will auto scale my graph again back to normal.
+Okay, so the next step that I wanted to do is I wanted
+to show you guys what if we decided to import maybe a little
+bit complex or maybe a little bit advanced data set
+and that should set us up to our first mini challenge which
+is many challenge number one coming up.
+So I wanted to go ahead and import another data which
+is going to be my university admission dot c S V data.
+So in order to import that I'm going to say well admission
+underscore the F equals two.
+I'm going to use pandas as well, so I'm gonna say pd dot read
+underscore c S V open parenthesis.
+And I'm going to specify.
+The data will be my university underscore admission dot c S V.
+Let's go ahead and visualize the admission and the score.
+The F. It's not going to say admission again.
+The F people are shift and enter.
+Here we go.
+It's simply the a little bit more advanced data set as
+compared to the employee's salary data set.
+And here we have our G R. E score toefel score, university
+rating here I have the statement of purpose which is how
+strong the statement of purpose is.
+And this data set is essentially used primarily for machine
+learning applications.
+And it's primarily used to predict this column here, which is
+my chances of admission.
+So basically I wanted to know be given a student profile
+like his his or her G. R. E.
+Score toefel score rating.
+What's the how strong their statement of purpose is?
+What is the letter of recommendations?
+What's your G. P.
+A. And if they have done research or not, all
+of that information is being captured and we wanted
+to predict the chances of admission.
+Okay, all right, so now it's time for our first minute
+challenge.
+What I want you guys to do is I want you to plot this cattle
+plot for the G. R. S.
+Core versus the chances of admission.
+I want you to tell me what do you infer or kind of get out
+of that plot?
+What do you like?
+What information we can obtain from that plot?
+And I want you to also use the color attribute to show
+the university rating as a third dimension
+and that might need a little bit of external research
+and that's what I want you guys to do.
+I wanted to kind of stretch your limits and explore as well
+how to add color attributes in plot.
+We express please go ahead, pause the video, give it a shot
+and I will see you guys after the challenge.
+All right.
+I hope you guys were able to figure out the mini challenge.
+What I asked you guys to do is to please go ahead and just
+plot the GRS core versus the chances of admission.
+All what you need to do is you need to say fig equals two PX
+dot scatter.
+And then you need to say you open parentheses.
+You need to specify what data that you're interested in,
+which is admission underscored the F and then you need
+to specify what do you want to plot on the X axis and what do
+you want to plot on the Y axis, on the X axis?
+I have my G R E score on the y axis.
+I wanted to plot the chances of admission.
+So here I'm going to say why is equal still my chances
+of admissions are going to be chance of admit and then what
+you need to do next is you need to just say fig dot co
+two essentially show the plots were going to say fig dot show
+the open parentheses and that's it.
+If you press shift and enter, that should simply is going
+to run our data set and here we go, what you guys can see
+here is I was able to plot the GRS core versus the chances
+of admission and of course what you infer from the graph is
+as the G r E score increases, most likely the chances
+of admission tend to increase as well of these students
+and as well in order to insert a new cell, you can go ahead
+and press a and that should insert a new cell here as well.
+And what you guys need to do is to simply copy this code here
+as is so just gonna copy that right click and click copy,
+come here and paste it here, right click and then paste.
+And all I need to do is I need to add an additional
+attributes and that will be my color attributes are gonna say
+color liquids to and I ask you guys to add the university
+rating.
+So going to say university they think and that will be my
+additional color attributes.
+You press shift and enter.
+You should be able to see here that we have been added
+a third dimension to our plot.
+So what I have my G R. E score here, I have my chances
+of admission and now I added the university relating on top
+of it. So basically the color code indicates that the more
+yellow color indicates a high university rating which makes
+sense. As student GRS score increases as the university
+rating increases, their chances of admission
+to the university increases as well, which makes complete
+sense. All right, okay.
+So that's simply all I have for task number one.
+I hope you guys enjoyed it in task number two.
+Let's go ahead and plot interactive bubble charts.
+Please go ahead.
+Please stay tuned.
+Best of luck and I will see you guys in the next desk.
