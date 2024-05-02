@@ -23,6 +23,7 @@ def get_estimated_price(location, sqft, bhk, bath):
     return round(__model.predict([x])[0],2)
 
 def get_location_names():
+    load_saved_artifacts()
     return __locations
 
 def load_saved_artifacts():
