@@ -3,8 +3,40 @@ from fastapi import FastAPI, status, HTTPException, Response
 from pydantic import BaseModel
 from typing import Optional
 from random import randrange
+import mysql.connector
+
+
 
 app = FastAPI()
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="root",
+    database="posts_fastapi"
+)
+
+# Create a cursor object
+mycursor = mydb.cursor()
+
+# Define the SQL query to retrieve all records
+sql = "SELECT * FROM posts"
+
+# Execute the query
+mycursor.execute(sql)
+
+# Fetch all results
+myresult = mycursor.fetchall()
+
+# Print the results (modify this section for your specific needs)
+print("Post Details:")
+for row in myresult:
+  print(row)
+
+# Close the cursor and connection (important)
+# mycursor.close()
+# mydb.close()
+
 
 class Post(BaseModel):
     title: str
@@ -34,7 +66,17 @@ def root():
 
 @app.get("/posts")
 def get_posts():
-    return {"data": my_posts }
+    statement = "SELECT * FROM posts"
+    mycursor.execute(statement)
+    myresult = mycursor.fetchall()
+    column_names = [desc[0] for desc in mycursor.description]
+    
+    my_posts = [
+        {col: val for val, col in zip(row, column_names)}
+        for row in myresult
+    ]
+
+    return {"details" : my_posts}
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_post(post: Post):
@@ -64,7 +106,7 @@ def delete_post(id: int):
 
     index = find_index_post(id)
 
-    if index == None:
+    if index is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"Post with id: {id} doesnt exist")
 
