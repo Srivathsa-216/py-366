@@ -20,18 +20,18 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 # Define the SQL query to retrieve all records
-sql = "SELECT * FROM posts"
+#sql = "SELECT * FROM posts"
 
 # Execute the query
-mycursor.execute(sql)
+#mycursor.execute(sql)
 
 # Fetch all results
-myresult = mycursor.fetchall()
+#myresult = mycursor.fetchall()
 
 # Print the results (modify this section for your specific needs)
-print("Post Details:")
-for row in myresult:
-  print(row)
+# print("Post Details:")
+# for row in myresult:
+#   print(row)
 
 # Close the cursor and connection (important)
 # mycursor.close()
@@ -42,8 +42,6 @@ class Post(BaseModel):
     title: str
     content: str
     published: bool = True
-    rating: Optional[int] = None
-
 
 my_posts = [
     {"id": 1, "title": "Chocolate of India", "content": "Dairy Milk chocolate will always be the top priority of customers in India."},
