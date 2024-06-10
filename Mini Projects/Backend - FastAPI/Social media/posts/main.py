@@ -43,20 +43,20 @@ class Post(BaseModel):
     content: str
     published: bool = True
 
-my_posts = [
-    {"id": 1, "title": "Chocolate of India", "content": "Dairy Milk chocolate will always be the top priority of customers in India."},
-    {"id": 2, "title": "Leader to Remember", "content": "Modi is or will always be rememberd as the number 1 global leader."}
-]
+# my_posts = [
+#     {"id": 1, "title": "Chocolate of India", "content": "Dairy Milk chocolate will always be the top priority of customers in India."},
+#     {"id": 2, "title": "Leader to Remember", "content": "Modi is or will always be rememberd as the number 1 global leader."}
+# ]
 
-def find_post(id):
-    for p in my_posts:
-        if p["id"] == id:
-            return p
+# def find_post(id):
+#     for p in my_posts:
+#         if p["id"] == id:
+#             return p
         
-def find_index_post(id):
-    for i,p in enumerate(my_posts):
-        if p['id'] == id:
-            return i
+# def find_index_post(id):
+#     for i,p in enumerate(my_posts):
+#         if p['id'] == id:
+#             return i
 
 @app.get("/")
 def root():
@@ -78,21 +78,17 @@ def get_posts():
 
 @app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_post(post: Post):
-    print(post)
-    post_dict = post.model_dump()
-    post_dict["id"] = randrange(0, 999999999)
-    my_posts.append(post_dict)
-    return {"new_post" : 
-            {"status":"Post Created Successfully",
-            "details": f"title : {post.title} , content : {post.content}",
-            "published": f"{post.published}",
-            "rating": f"{post.rating}"}
-            }
+    #print(post)
+    query = "INSERT INTO posts (title, content, published) VALUES (%s, %s, %s)"
+    mycursor.execute(query, (post.title, post.content, post.published))
+    mydb.commit()
+    return { "Record inserted to DB successfuly"}
 
 @app.get("/posts/{id}")
 def get_post(id: int):
-
-    if not (post := find_post(id)):
+    query = f"select * from posts where id = {id}"
+    mycursor.execute(query)
+    if not (post := mycursor.fetchall()):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id : {id} was not found")
 
@@ -101,28 +97,23 @@ def get_post(id: int):
 
 @app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int):
-
-    index = find_index_post(id)
-
-    if index is None:
+    query = f"delete from posts where id = {id}"
+    mycursor.execute(query)
+    if mycursor.rowcount <= 0:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"Post with id: {id} doesnt exist")
 
-    my_posts.pop(index)
-
+    mydb.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 @app.put("/posts/{id}")
 def update_post(id: int, post: Post):
+    query = "update posts set title = %s, content = %s, published = %s where id = %s"
+    mycursor.execute(query, (post.title, post.content, post.published, str(id)))
+    mydb.commit()
 
-    index = find_index_post(id)
-
-    if index == None:
+    if mycursor.rowcount == 0:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"Post with id: {id} doesnt exist")
-    
-    post_dict = post.model_dump()
-    post_dict['id'] = id
-    my_posts[index] = post_dict
 
-    return {"Data Updated Succesfully" : post_dict}
+    return {"Data Updated Succesfully" : f"{mycursor.rowcount} records affected"}
