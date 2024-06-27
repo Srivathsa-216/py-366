@@ -6,7 +6,6 @@ from random import randrange
 import mysql.connector
 
 
-
 app = FastAPI()
 
 mydb = mysql.connector.connect(
